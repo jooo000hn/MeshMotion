@@ -1,7 +1,14 @@
 #include <iostream>
+#include "ASFParser.h"
+#include "GlobalVariables.h"
 
 int main()
 {
-	std::cout << "Let's work on mesh extraction and motion!\n";
+	auto gv = GlobalVariables::Instance();
 
+	std::cout << "Let's work on mesh extraction and motion!\n";
+	auto p = ASFParser::Instance();
+	p->ParseASF(gv->dataDir + gv->testASF);
+
+	system("pause");
 }

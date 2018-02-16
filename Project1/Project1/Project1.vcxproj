@@ -112,7 +112,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AMCParser.cpp" />
+    <ClCompile Include="ASFParser.cpp" />
+    <ClCompile Include="GlobalVariables.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MeshMotionFlow.cpp" />
+    <ClCompile Include="MeshSkeleton.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AMCParser.h" />
+    <ClInclude Include="ASFParser.h" />
+    <ClInclude Include="GlobalVariables.h" />
+    <ClInclude Include="MeshMotionFlow.h" />
+    <ClInclude Include="MeshSkeleton.h" />
+    <ClInclude Include="Tool.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
