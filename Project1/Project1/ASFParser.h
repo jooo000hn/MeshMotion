@@ -13,6 +13,7 @@ public:
 private:
 	ASFParser();
 	~ASFParser();
+	std::vector<std::string> GetTokens(std::string f);
 	ASFParser& operator=(ASFParser const&) const { return *_instance; };
 	static ASFParser* _instance;
 };

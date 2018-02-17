@@ -17,7 +17,7 @@ public:
 		std::string funcName = __func__;
 		bool isT = checkKeyword(s, t);
 		DEBUG(funcName, isT);
-		return	isT;
+		return false == isT;
 	}
 
 private:

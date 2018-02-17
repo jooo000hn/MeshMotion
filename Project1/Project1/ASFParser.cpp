@@ -17,12 +17,9 @@ ASFParser::~ASFParser()
 {
 }
 
-MeshSkeleton ASFParser::ParseASF(std::string file)
+std::vector<std::string> ASFParser::GetTokens(std::string f)
 {
-	MeshSkeleton skeleton;
-	DEBUG("We try to parse ", file);
-
-	std::ifstream ifs(file);
+	std::ifstream ifs(f);
 	std::string s;
 	std::vector<std::string> tokens;
 	int row = 0;
@@ -36,9 +33,18 @@ MeshSkeleton ASFParser::ParseASF(std::string file)
 	}
 	else
 	{
-		DEBUG(file, "Cannot open!");
+		DEBUG(f, "Cannot open!");
 	}
+	return tokens;
+}
 
+MeshSkeleton ASFParser::ParseASF(std::string file)
+{
+	MeshSkeleton skeleton;
+	DEBUG("We try to parse ", file);
+
+	// Initialize tokens
+	auto tokens = GetTokens(file);
 
 	return skeleton;
 }

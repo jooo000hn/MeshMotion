@@ -9,52 +9,53 @@ public:
 	~SkeletonNode();
 
 	// getter and setter
-	int id1() const
+
+	int Id() const
 	{
 		return id;
 	}
 
-	void set_id(int id)
+	void SetId(int id)
 	{
 		this->id = id;
 	}
 
-	bool is_leaf() const
+	bool IsLeaf() const
 	{
 		return isLeaf;
 	}
 
-	void set_is_leaf(bool is_leaf)
+	void SetIsLeaf(bool is_leaf)
 	{
 		isLeaf = is_leaf;
 	}
 
-	SkeletonNode* parent() const
+	SkeletonNode* Parent() const
 	{
 		return _parent;
 	}
 
-	void set_parent(SkeletonNode* skeleton_node)
+	void SetParent(SkeletonNode* skeleton_node)
 	{
 		_parent = skeleton_node;
 	}
 
-	std::vector<SkeletonNode*> children_nodes() const
+	std::vector<SkeletonNode*> ChildrenNodes() const
 	{
 		return _childrenNodes;
 	}
 
-	void set_children_nodes(const std::vector<SkeletonNode*>& skeleton_nodes)
+	void SetChildrenNodes(const std::vector<SkeletonNode*>& skeleton_nodes)
 	{
 		_childrenNodes = skeleton_nodes;
 	}
 
-	std::unordered_map<std::string, std::string> value_pair() const
+	std::unordered_map<std::string, std::string> ValuePair() const
 	{
 		return _value_pair;
 	}
 
-	void set_value_pair(const std::unordered_map<std::string, std::string>& pairs)
+	void SetValuePair(const std::unordered_map<std::string, std::string>& pairs)
 	{
 		_value_pair = pairs;
 	}
