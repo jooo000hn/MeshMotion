@@ -3,6 +3,50 @@
 #include <string>
 #include "MeshSkeleton.h"
 
+enum class SectionName
+{
+	version,
+	name,
+	units,
+	documentation,
+	root,
+	bonedata
+};
+
+enum class BoneName
+{
+	lhipjoint,     // left hip joint
+	lfemur,
+	ltibia,
+	lfoot,
+	ltoes,
+	rhipjoint,
+	rfemur,
+	rtibia,
+	rfoot,
+	rtoes,
+	lowerback,
+	upperback,
+	thorax,
+	lowerneck,
+	upperneck,
+	head, 
+	lclavicle,
+	lhumerus,
+	lradius,
+	lwrist,
+	lhand,
+	lfingers,
+	lthumnb,
+	rclavicle,
+	rhumerus,
+	rradius,
+	rwrist,
+	rhand,
+	rfingers,
+	rthumb,
+};
+
 // ASF is the format of skeleton
 class ASFParser
 {

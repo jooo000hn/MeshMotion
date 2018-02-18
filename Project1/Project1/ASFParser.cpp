@@ -43,6 +43,11 @@ void ASFParser::ParseEachNode(SkeletonNode* n, std::vector<std::string> subToken
 	if (subTokens.size() == 0)
 		return;
 
+	// std::for_each(subTokens.begin(), subTokens.end(), [](std::string s) {DEBUG("current token: ", s); });
+
+	// first one is :xxx
+	auto s = subTokens[0].substr(1);
+
 
 }
 
@@ -74,7 +79,7 @@ MeshSkeleton ASFParser::ParseASF(std::string file)
 		// process one 
 		if (i != positions.size() - 1)
 		{
-			ParseEachNode(n, std::vector<std::string>(tokens.begin() + pos, tokens.begin() + positions[i + 1] - 1));
+			ParseEachNode(n, std::vector<std::string>(tokens.begin() + pos, tokens.begin() + positions[i + 1]));
 		}
 		else // deal with the last one
 		{
