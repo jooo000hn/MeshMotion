@@ -14,6 +14,7 @@ private:
 	ASFParser();
 	~ASFParser();
 	std::vector<std::string> GetTokens(std::string f);
+	void ParseEachNode(SkeletonNode *n, std::vector<std::string> subTokens);
 	ASFParser& operator=(ASFParser const&) const { return *_instance; };
 	static ASFParser* _instance;
 };

@@ -38,6 +38,14 @@ std::vector<std::string> ASFParser::GetTokens(std::string f)
 	return tokens;
 }
 
+void ASFParser::ParseEachNode(SkeletonNode* n, std::vector<std::string> subTokens)
+{
+	if (subTokens.size() == 0)
+		return;
+
+
+}
+
 MeshSkeleton ASFParser::ParseASF(std::string file)
 {
 	MeshSkeleton skeleton;
@@ -45,13 +53,36 @@ MeshSkeleton ASFParser::ParseASF(std::string file)
 
 	// Initialize tokens
 	auto tokens = GetTokens(file);
-	
-	// Root node
-	MeshSkeleton result;
-	result.SetTreeRoot(new SkeletonNode());
-	size_t i = 0;
-	
+	std::vector<int> positions;
+	int p = 0;
+	std::for_each(tokens.begin(), tokens.end(),[&](std::string s)
+	{
+		if (s.find(":")!=std::string::npos)
+		{
+			positions.push_back(p);
+		}
+		p++;
+	});
 
+	// Root node
+	skeleton.SetTreeRoot(new SkeletonNode());
+	for (unsigned i = 0; i < positions.size(); ++i)
+	{
+		unsigned pos = positions[i];
+		DEBUG("Find yo ~~~", tokens[pos]);
+		SkeletonNode* n = new SkeletonNode();
+		// process one 
+		if (i != positions.size() - 1)
+		{
+			ParseEachNode(n, std::vector<std::string>(tokens.begin() + pos, tokens.begin() + positions[i + 1] - 1));
+		}
+		else // deal with the last one
+		{
+			ParseEachNode(n, std::vector<std::string>(tokens.begin() + pos, tokens.end()));
+		}
+		skeleton.TreeRoot()->AddChildrenNode(n);
+	};
 
 	return skeleton;
 }
+

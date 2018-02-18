@@ -26,17 +26,9 @@ public:
 		std::string t = "a";
 
 		std::string funcName = __func__;
-		auto ptr = GetKeyWordPosition(s, t);
-		if(ptr == s.end())
-		{
-			DEBUG("Not", "Find!");
-			return false;
-		}
-		else
-		{
-			DEBUG("In ", s.end() - ptr);
-			return true;
-		}
+		auto ptr = GetKeyWordPositions(s, t);
+		
+		return s[ptr[0]] == t[0];
 	}
 
 private:

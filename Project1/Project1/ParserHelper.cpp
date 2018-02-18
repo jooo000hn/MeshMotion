@@ -12,7 +12,7 @@ bool CheckKeyWord(std::string s, std::string target)
 	return std::regex_search(s,e);
 }
 
-std::vector<unsigned int> GetKeyWordPositions(std::string& s, std::string& target)
+std::vector<unsigned int> GetKeyWordPositions(std::string s, std::string target)
 {
 	std::smatch m;
 	std::regex e(target);

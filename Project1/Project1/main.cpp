@@ -11,27 +11,12 @@ int main()
 {
 	auto gv = GlobalVariables::Instance();
 
-//	std::cout << "Let's work on mesh extraction and motion!\n";
-//	auto p = ASFParser::Instance();
-//	p->ParseASF(gv->dataDir + gv->testASF);
-//
-//	
-//	uni_test();
+	std::cout << "Let's work on mesh extraction and motion!\n";
+	auto p = ASFParser::Instance();
+	p->ParseASF(gv->dataDir + gv->testASF);
 
-
-	std::string s("this subject has a submarine as a subsequence");
-	std::smatch m;
-	std::regex e("\\b(sub)([^ ]*)");   // matches words beginning by "sub"
-
-	std::cout << "Target sequence: " << s << std::endl;
-	std::cout << "Regular expression: /\\b(sub)([^ ]*)/" << std::endl;
-	std::cout << "The following matches and submatches were found:" << std::endl;
-
-	while (std::regex_search(s, m, e)) {
-		for (auto x : m) std::cout << x << " ";
-		std::cout << std::endl;
-		s = m.suffix().str();
-	}
+	
+	uni_test();
 
 	system("pause");
 }
@@ -39,10 +24,13 @@ int main()
 void uni_test()
 {
 	auto ut = unit_test::Instance();
-	
-	if (
-		ut->TestCheckKeyword() &&
-		ut->TestGetKeyWordPosition())
-		DEBUG("All true!", "");
+	bool allTrue = true;
+	bool flag = ut->TestCheckKeyword();
+	allTrue = allTrue && flag;
+	DEBUG("TestCheckKeyword", flag);
+	flag = ut->TestGetKeyWordPosition();
+	allTrue = allTrue && flag;
+	DEBUG("TestGetKeyWordPosition", flag);
 
+	DEBUG("All is ", allTrue);
 }
