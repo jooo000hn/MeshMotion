@@ -4,7 +4,7 @@
 #include <stack>
 #include "Tool.h"
 #include "GlobalVariables.h"
-
+#include "ParserHelper.h"
 
 ASFParser* ASFParser::_instance = nullptr;
 
@@ -45,6 +45,13 @@ MeshSkeleton ASFParser::ParseASF(std::string file)
 
 	// Initialize tokens
 	auto tokens = GetTokens(file);
+	
+	// Root node
+	MeshSkeleton result;
+	result.SetTreeRoot(new SkeletonNode());
+	size_t i = 0;
+	
+
 
 	return skeleton;
 }

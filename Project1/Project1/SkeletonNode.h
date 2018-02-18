@@ -45,9 +45,9 @@ public:
 		return _childrenNodes;
 	}
 
-	void SetChildrenNodes(const std::vector<SkeletonNode*>& skeleton_nodes)
+	void AddChildrenNode(SkeletonNode* n)
 	{
-		_childrenNodes = skeleton_nodes;
+		_childrenNodes.push_back(n);
 	}
 
 	std::unordered_map<std::string, std::string> ValuePair() const
