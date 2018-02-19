@@ -16,7 +16,7 @@ int main()
 	auto skeleton = p->ParseASF(gv->dataDir + gv->testASF);
 
 	
-	 uni_test();
+	uni_test();
 
 	system("pause");
 }

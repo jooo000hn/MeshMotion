@@ -58,9 +58,14 @@ public:
 		return _dof;
 	}
 
-	void SetDof(const std::vector<std::string>& basic_strings)
+//	void SetDof(const std::vector<std::string>& basic_strings)
+//	{
+//		_dof = basic_strings;
+//	}
+
+	void AddDof(const std::string s)
 	{
-		_dof = basic_strings;
+		_dof.push_back(s);
 	}
 
 	std::vector<glm::vec2> Limits() const

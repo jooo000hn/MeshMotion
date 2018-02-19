@@ -10,5 +10,10 @@ MeshSkeleton::MeshSkeleton()
 
 MeshSkeleton::~MeshSkeleton()
 {
-	//std::for_each(_bonedata.begin(), _bonedata.end(), [](SkeletonNode* s) {delete s; });
+	// std::for_each(_bonedata.begin(), _bonedata.end(), [](SkeletonNode* s) {SAFE_DELETE(s); });
+}
+
+void MeshSkeleton::Release()
+{
+	std::for_each(_bonedata.begin(), _bonedata.end(), [](SkeletonNode* s) {SAFE_DELETE(s); });
 }

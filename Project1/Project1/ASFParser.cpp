@@ -154,9 +154,6 @@ void ASFParser::ParseBone(std::vector<SkeletonNode*>& bonedata, std::vector<std:
 					currentNode->SetName(subTokens[++i]);
 					break;
 				case BoneInfo::direction:
-					DEBUG("Three: ", std::stof(subTokens[i+1]));
-					DEBUG("Three: ", std::stof(subTokens[i + 2]));
-					DEBUG("Three: ", std::stof(subTokens[i + 3]));
 					currentNode->SetDirection(glm::vec3(std::stof(subTokens[i+1]), std::stof(subTokens[i+2]), std::stof(subTokens[i+3])));
 					i += 3;
 					break;
@@ -167,7 +164,16 @@ void ASFParser::ParseBone(std::vector<SkeletonNode*>& bonedata, std::vector<std:
 					currentNode->SetAxis(std::vector<std::string>{subTokens[++i], subTokens[++i], subTokens[++i], subTokens[++i]});
 					break;
 				case BoneInfo::dof:
-					currentNode->SetDof(std::vector<std::string>{subTokens[++i], subTokens[++i], subTokens[++i]});
+					count = 1;
+					while (subTokens[i + count] != "limits")
+					{
+						count++;
+					}
+					for (int j = 0; j < count-1; j++)
+					{
+						currentNode->AddDof(subTokens[i + j + 1]);
+					}
+					i += count-1;
 					break;
 				case BoneInfo::limits:
 					count = 1;

@@ -6,6 +6,7 @@ class MeshSkeleton
 public:
 	MeshSkeleton();
 	~MeshSkeleton();
+	void Release();
 
 	// getter and setter
 	std::string Version() const
