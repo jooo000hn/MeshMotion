@@ -10,7 +10,9 @@ enum class SectionName
 	units,
 	documentation,
 	root,
-	bonedata
+	bonedata,
+	hierarchy,
+	undefined
 };
 
 enum class BoneName
@@ -45,6 +47,7 @@ enum class BoneName
 	rhand,
 	rfingers,
 	rthumb,
+	undefined
 };
 
 // ASF is the format of skeleton
@@ -58,7 +61,12 @@ private:
 	ASFParser();
 	~ASFParser();
 	std::vector<std::string> GetTokens(std::string f);
-	void ParseEachNode(SkeletonNode *n, std::vector<std::string> subTokens);
+	static void ParseSection(MeshSkeleton& skeleton, std::vector<std::string> subTokens);
+	static SectionName Str2Section(std::string s);
+	static BoneName Str2Bone(std::string s);
+	static bool CheckSizeEqual(std::vector<std::string> &subTokens, unsigned size, std::string errorName);
+	static bool CheckSizeGreater(std::vector<std::string> &subTokens, unsigned size, std::string errorName);
+	// singleton style
 	ASFParser& operator=(ASFParser const&) const { return *_instance; };
 	static ASFParser* _instance;
 };
