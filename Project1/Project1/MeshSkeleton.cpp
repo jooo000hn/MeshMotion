@@ -10,4 +10,5 @@ MeshSkeleton::MeshSkeleton()
 
 MeshSkeleton::~MeshSkeleton()
 {
+	//std::for_each(_bonedata.begin(), _bonedata.end(), [](SkeletonNode* s) {delete s; });
 }

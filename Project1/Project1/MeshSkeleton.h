@@ -8,8 +8,6 @@ public:
 	~MeshSkeleton();
 
 	// getter and setter
-	// getter and setter
-
 	std::string Version() const
 	{
 		return _version;
@@ -110,5 +108,6 @@ private:
 	glm::vec3 _root_position;
 	glm::vec3 _root_orientation;
 	std::vector<SkeletonNode*> _bonedata;
+	
 };
 

@@ -13,10 +13,10 @@ int main()
 
 	std::cout << "Let's work on mesh extraction and motion!\n";
 	auto p = ASFParser::Instance();
-	p->ParseASF(gv->dataDir + gv->testASF);
+	auto skeleton = p->ParseASF(gv->dataDir + gv->testASF);
 
 	
-	uni_test();
+	 uni_test();
 
 	system("pause");
 }
