@@ -122,7 +122,6 @@
     <ClCompile Include="MeshSkeleton.cpp" />
     <ClCompile Include="ParserHelper.cpp" />
     <ClCompile Include="SkeletonNode.cpp" />
-    <ClCompile Include="SkeletonSpace.cpp" />
     <ClCompile Include="unit_test.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -133,7 +132,6 @@
     <ClInclude Include="MeshSkeleton.h" />
     <ClInclude Include="ParserHelper.h" />
     <ClInclude Include="SkeletonNode.h" />
-    <ClInclude Include="SkeletonSpace.h" />
     <ClInclude Include="Tool.h" />
     <ClInclude Include="unit_test.h" />
   </ItemGroup>

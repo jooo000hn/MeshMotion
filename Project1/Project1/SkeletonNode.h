@@ -24,7 +24,7 @@ public:
 	}
 
 private:
-	int _id;       // if leaf node, should have an id
+	int _id;     
 	std::string _name;
 	glm::vec3 _direction;
 	float _length;

@@ -69,7 +69,7 @@ void ASFParser::ParseSection(MeshSkeleton &skeleton, std::vector<std::string> su
 		skeleton.SetName(subTokens[1]);
 		break;
 	case SectionName::units:
-		if (!CheckSizeEqual(subTokens, 2, s))
+		if (!CheckSizeEqual(subTokens, 7, s))
 			return;
 		unit[subTokens[1]] = subTokens[2];
 		unit[subTokens[3]] = subTokens[4];
@@ -87,19 +87,19 @@ void ASFParser::ParseSection(MeshSkeleton &skeleton, std::vector<std::string> su
 			return;
 		id = 2;
 		// root order
-		while(subTokens[id++]=="axis")
+		while(subTokens[id]!="axis")
 		{
-			rootOrder.push_back(subTokens[id]);
+			rootOrder.push_back(subTokens[id++]);
 		}
+		id++;
 		// root axis
-		id++;
-		while(subTokens[id++]=="position")
+		while(subTokens[id]!="position")
 		{
-			rootAxis.push_back(subTokens[id]);
+			rootAxis.push_back(subTokens[id++]);
 		}
-		// root position
 		id++;
-		while(subTokens[id++]=="orientation")
+		// root position
+		while(subTokens[id]!="orientation")
 		{
 			rootPosition = glm::vec3(
 				atof(subTokens[id++].c_str()), 
@@ -108,7 +108,7 @@ void ASFParser::ParseSection(MeshSkeleton &skeleton, std::vector<std::string> su
 		}
 		id++;
 		// root orientation
-		while(id<subTokens.size())
+		while(id < subTokens.size())
 		{
 			rootOrientation = glm::vec3(
 				atof(subTokens[id++].c_str()),
@@ -315,7 +315,7 @@ bool ASFParser::CheckSizeEqual(std::vector<std::string>& subTokens, unsigned siz
 
 bool ASFParser::CheckSizeGreater(std::vector<std::string>& subTokens, unsigned size, std::string errorName)
 {
-	if (subTokens.size() > size)
+	if (subTokens.size() < size)
 	{
 		DEBUG(errorName, "token size error!");
 		return false;
