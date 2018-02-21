@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include "MeshSkeleton.h"
+#include "IParseTool.h"
 
 enum class SectionName
 {
@@ -65,7 +66,7 @@ enum class BoneInfo
 };
 
 // ASF is the format of skeleton
-class ASFParser
+class ASFParser:public IParseTool
 {
 public:
 	static ASFParser* Instance() { if (_instance == nullptr) _instance = new ASFParser();  return _instance; }
@@ -74,7 +75,6 @@ public:
 private:
 	ASFParser();
 	~ASFParser();
-	std::vector<std::string> GetTokens(std::string f);
 	static void ParseSection(MeshSkeleton& skeleton, std::vector<std::string> subTokens);
 	static void ParseBone(std::vector<SkeletonNode*> &bonedata, std::vector<std::string> subTokens);
 	

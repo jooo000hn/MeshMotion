@@ -2,8 +2,9 @@
 
 
 
-MeshMotionFlow::MeshMotionFlow()
+MeshMotionFlow::MeshMotionFlow(int frames)
 {
+	_motions.resize(frames);
 }
 
 

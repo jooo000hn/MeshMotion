@@ -18,27 +18,6 @@ ASFParser::~ASFParser()
 {
 }
 
-std::vector<std::string> ASFParser::GetTokens(std::string f)
-{
-	std::ifstream ifs(f);
-	std::string s;
-	std::vector<std::string> tokens;
-	int row = 0;
-	if (ifs.is_open())
-	{
-		while (ifs >> s)
-		{
-			//DEBUG(row++, s);
-			tokens.push_back(s);
-		}
-	}
-	else
-	{
-		DEBUG(f, "Cannot open!");
-	}
-	return tokens;
-}
-
 void ASFParser::ParseSection(MeshSkeleton &skeleton, std::vector<std::string> subTokens)
 {
 	if (subTokens.size() == 0)

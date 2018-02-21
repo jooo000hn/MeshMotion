@@ -124,6 +124,7 @@
     <ClCompile Include="MeshMotionFlow.cpp" />
     <ClCompile Include="MeshSkeleton.cpp" />
     <ClCompile Include="ParserHelper.cpp" />
+    <ClCompile Include="IParseTool.cpp" />
     <ClCompile Include="SkeletonNode.cpp" />
     <ClCompile Include="unit_test.cpp" />
   </ItemGroup>
@@ -134,6 +135,7 @@
     <ClInclude Include="MeshMotionFlow.h" />
     <ClInclude Include="MeshSkeleton.h" />
     <ClInclude Include="ParserHelper.h" />
+    <ClInclude Include="IParseTool.h" />
     <ClInclude Include="SkeletonNode.h" />
     <ClInclude Include="Tool.h" />
     <ClInclude Include="unit_test.h" />
