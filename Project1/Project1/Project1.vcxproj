@@ -30,7 +30,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -59,6 +59,7 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="OpenGL_Envrionment.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -72,6 +73,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(ProjectDir)/include/;$(IncludePath)</IncludePath>
+    <ExecutablePath>$(ProjectDir)/bin/;$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(ProjectDir)/include/;$(IncludePath)</IncludePath>
@@ -120,6 +122,26 @@
     <ClCompile Include="AMCParser.cpp" />
     <ClCompile Include="ASFParser.cpp" />
     <ClCompile Include="GlobalVariables.cpp" />
+    <ClCompile Include="GraphicsGlobalVariables.cpp" />
+    <ClCompile Include="GraphicsSkeleton.cpp" />
+    <ClCompile Include="include\DrawObjects\GraphicsBase.cpp" />
+    <ClCompile Include="include\DrawObjects\GraphicsFBO.cpp" />
+    <ClCompile Include="include\DrawObjects\GraphicsFish.cpp" />
+    <ClCompile Include="include\DrawObjects\GraphicsLight.cpp" />
+    <ClCompile Include="include\DrawObjects\GraphicsPoints.cpp" />
+    <ClCompile Include="include\DrawObjects\GraphicsShaderToy.cpp" />
+    <ClCompile Include="include\DrawObjects\IBufferManager.cpp" />
+    <ClCompile Include="include\IchenLib\Camera.cpp" />
+    <ClCompile Include="include\IchenLib\DebugCallback.cpp" />
+    <ClCompile Include="include\IchenLib\IchenGlut.cpp" />
+    <ClCompile Include="include\IchenLib\LoadMesh.cpp" />
+    <ClCompile Include="include\IchenLib\LoadTexture.cpp" />
+    <ClCompile Include="include\IchenLib\ShaderProcessor.cpp" />
+    <ClCompile Include="include\IchenLib\Utilities.cpp" />
+    <ClCompile Include="include\imgui\imgui.cpp" />
+    <ClCompile Include="include\imgui\imgui_demo.cpp" />
+    <ClCompile Include="include\imgui\imgui_draw.cpp" />
+    <ClCompile Include="include\imgui\imgui_impl_glut.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MeshMotionFlow.cpp" />
     <ClCompile Include="MeshSkeleton.cpp" />
@@ -132,6 +154,30 @@
     <ClInclude Include="AMCParser.h" />
     <ClInclude Include="ASFParser.h" />
     <ClInclude Include="GlobalVariables.h" />
+    <ClInclude Include="GraphicsGlobalVariables.h" />
+    <ClInclude Include="GraphicsSkeleton.h" />
+    <ClInclude Include="include\DrawObjects\GraphicsBase.h" />
+    <ClInclude Include="include\DrawObjects\GraphicsFBO.h" />
+    <ClInclude Include="include\DrawObjects\GraphicsFish.h" />
+    <ClInclude Include="include\DrawObjects\GraphicsLight.h" />
+    <ClInclude Include="include\DrawObjects\GraphicsPoints.h" />
+    <ClInclude Include="include\DrawObjects\GraphicsShaderToy.h" />
+    <ClInclude Include="include\DrawObjects\IBufferManager.h" />
+    <ClInclude Include="include\IchenLib\Camera.h" />
+    <ClInclude Include="include\IchenLib\DebugCallback.h" />
+    <ClInclude Include="include\IchenLib\GLCommon.h" />
+    <ClInclude Include="include\IchenLib\IchenGlut.h" />
+    <ClInclude Include="include\IchenLib\LoadMesh.h" />
+    <ClInclude Include="include\IchenLib\LoadTexture.h" />
+    <ClInclude Include="include\IchenLib\ShaderProcessor.h" />
+    <ClInclude Include="include\IchenLib\Utilities.h" />
+    <ClInclude Include="include\imgui\imconfig.h" />
+    <ClInclude Include="include\imgui\imgui.h" />
+    <ClInclude Include="include\imgui\imgui_impl_glut.h" />
+    <ClInclude Include="include\imgui\imgui_internal.h" />
+    <ClInclude Include="include\imgui\stb_rect_pack.h" />
+    <ClInclude Include="include\imgui\stb_textedit.h" />
+    <ClInclude Include="include\imgui\stb_truetype.h" />
     <ClInclude Include="MeshMotionFlow.h" />
     <ClInclude Include="MeshSkeleton.h" />
     <ClInclude Include="ParserHelper.h" />

@@ -13,69 +13,213 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Parsers">
+      <UniqueIdentifier>{89d74431-ee36-4735-8f45-586a368fbeed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GraphicsTool">
+      <UniqueIdentifier>{344d2380-1e0f-41db-a67f-83257cf8089c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GraphicsTool\DrawObjects">
+      <UniqueIdentifier>{4a0550aa-fdcc-447e-824c-af0e34252686}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GraphicsTool\imgui">
+      <UniqueIdentifier>{b1cceb49-5b02-498f-9871-8f773ac9b762}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MeshSkeleton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MeshMotionFlow.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="AMCParser.cpp">
+      <Filter>Header Files\Parsers</Filter>
     </ClCompile>
     <ClCompile Include="ASFParser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AMCParser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GlobalVariables.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ParserHelper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="unit_test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SkeletonNode.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Parsers</Filter>
     </ClCompile>
     <ClCompile Include="IParseTool.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshMotionFlow.cpp">
+      <Filter>Header Files\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshSkeleton.cpp">
+      <Filter>Header Files\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="ParserHelper.cpp">
+      <Filter>Header Files\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="SkeletonNode.cpp">
+      <Filter>Header Files\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="unit_test.cpp">
+      <Filter>Header Files\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="include\IchenLib\Camera.cpp">
+      <Filter>Header Files\GraphicsTool</Filter>
+    </ClCompile>
+    <ClCompile Include="include\IchenLib\DebugCallback.cpp">
+      <Filter>Header Files\GraphicsTool</Filter>
+    </ClCompile>
+    <ClCompile Include="include\IchenLib\IchenGlut.cpp">
+      <Filter>Header Files\GraphicsTool</Filter>
+    </ClCompile>
+    <ClCompile Include="include\IchenLib\LoadMesh.cpp">
+      <Filter>Header Files\GraphicsTool</Filter>
+    </ClCompile>
+    <ClCompile Include="include\IchenLib\LoadTexture.cpp">
+      <Filter>Header Files\GraphicsTool</Filter>
+    </ClCompile>
+    <ClCompile Include="include\IchenLib\ShaderProcessor.cpp">
+      <Filter>Header Files\GraphicsTool</Filter>
+    </ClCompile>
+    <ClCompile Include="include\IchenLib\Utilities.cpp">
+      <Filter>Header Files\GraphicsTool</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsGlobalVariables.cpp">
+      <Filter>Header Files\GraphicsTool</Filter>
+    </ClCompile>
+    <ClCompile Include="include\DrawObjects\GraphicsBase.cpp">
+      <Filter>Header Files\GraphicsTool\DrawObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="include\DrawObjects\GraphicsFBO.cpp">
+      <Filter>Header Files\GraphicsTool\DrawObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="include\DrawObjects\GraphicsFish.cpp">
+      <Filter>Header Files\GraphicsTool\DrawObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="include\DrawObjects\GraphicsLight.cpp">
+      <Filter>Header Files\GraphicsTool\DrawObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="include\DrawObjects\GraphicsPoints.cpp">
+      <Filter>Header Files\GraphicsTool\DrawObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="include\DrawObjects\GraphicsShaderToy.cpp">
+      <Filter>Header Files\GraphicsTool\DrawObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="include\DrawObjects\IBufferManager.cpp">
+      <Filter>Header Files\GraphicsTool\DrawObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalVariables.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\imgui\imgui.cpp">
+      <Filter>Header Files\GraphicsTool\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="include\imgui\imgui_demo.cpp">
+      <Filter>Header Files\GraphicsTool\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="include\imgui\imgui_draw.cpp">
+      <Filter>Header Files\GraphicsTool\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="include\imgui\imgui_impl_glut.cpp">
+      <Filter>Header Files\GraphicsTool\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsSkeleton.cpp">
+      <Filter>Header Files\GraphicsTool\DrawObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MeshSkeleton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MeshMotionFlow.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="AMCParser.h">
+      <Filter>Header Files\Parsers</Filter>
     </ClInclude>
     <ClInclude Include="ASFParser.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Parsers</Filter>
     </ClInclude>
-    <ClInclude Include="AMCParser.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="IParseTool.h">
+      <Filter>Header Files\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshMotionFlow.h">
+      <Filter>Header Files\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshSkeleton.h">
+      <Filter>Header Files\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="ParserHelper.h">
+      <Filter>Header Files\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeletonNode.h">
+      <Filter>Header Files\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="Tool.h">
+      <Filter>Header Files\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="unit_test.h">
+      <Filter>Header Files\Parsers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IchenLib\Camera.h">
+      <Filter>Header Files\GraphicsTool</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IchenLib\DebugCallback.h">
+      <Filter>Header Files\GraphicsTool</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IchenLib\GLCommon.h">
+      <Filter>Header Files\GraphicsTool</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IchenLib\IchenGlut.h">
+      <Filter>Header Files\GraphicsTool</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IchenLib\LoadMesh.h">
+      <Filter>Header Files\GraphicsTool</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IchenLib\LoadTexture.h">
+      <Filter>Header Files\GraphicsTool</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IchenLib\ShaderProcessor.h">
+      <Filter>Header Files\GraphicsTool</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IchenLib\Utilities.h">
+      <Filter>Header Files\GraphicsTool</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsGlobalVariables.h">
+      <Filter>Header Files\GraphicsTool</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DrawObjects\GraphicsBase.h">
+      <Filter>Header Files\GraphicsTool\DrawObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DrawObjects\GraphicsFBO.h">
+      <Filter>Header Files\GraphicsTool\DrawObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DrawObjects\GraphicsFish.h">
+      <Filter>Header Files\GraphicsTool\DrawObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DrawObjects\GraphicsLight.h">
+      <Filter>Header Files\GraphicsTool\DrawObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DrawObjects\GraphicsPoints.h">
+      <Filter>Header Files\GraphicsTool\DrawObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DrawObjects\GraphicsShaderToy.h">
+      <Filter>Header Files\GraphicsTool\DrawObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DrawObjects\IBufferManager.h">
+      <Filter>Header Files\GraphicsTool\DrawObjects</Filter>
     </ClInclude>
     <ClInclude Include="GlobalVariables.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Tool.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="include\imgui\imconfig.h">
+      <Filter>Header Files\GraphicsTool\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="ParserHelper.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="include\imgui\imgui.h">
+      <Filter>Header Files\GraphicsTool\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="unit_test.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="include\imgui\imgui_impl_glut.h">
+      <Filter>Header Files\GraphicsTool\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="SkeletonNode.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="include\imgui\imgui_internal.h">
+      <Filter>Header Files\GraphicsTool\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="IParseTool.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="include\imgui\stb_rect_pack.h">
+      <Filter>Header Files\GraphicsTool\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\imgui\stb_textedit.h">
+      <Filter>Header Files\GraphicsTool\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\imgui\stb_truetype.h">
+      <Filter>Header Files\GraphicsTool\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsSkeleton.h">
+      <Filter>Header Files\GraphicsTool\DrawObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

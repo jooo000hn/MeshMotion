@@ -77,7 +77,8 @@ private:
 	~ASFParser();
 	static void ParseSection(MeshSkeleton& skeleton, std::vector<std::string> subTokens);
 	static void ParseBone(std::vector<SkeletonNode*> &bonedata, std::vector<std::string> subTokens);
-	
+	static void ParseHierarchy(std::vector<SkeletonNode*> &bonedata, std::vector<std::vector<std::string>> subTokens);
+
 	static SectionName Str2Section(std::string s);
 	static BoneInfo Str2BoneInfo(std::string s);
 	static BoneName Str2BoneName(std::string s);

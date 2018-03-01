@@ -77,6 +77,27 @@ public:
 	void SetRootPosition(const glm::vec3& highp_vec3)
 	{
 		_root_position = highp_vec3;
+		
+		// dealing with root axis order
+		if(_root_axis[0] != "")
+		{
+			auto axis_size = _root_axis[0].size();
+			for(int i= 0; i < axis_size;++i)
+			{
+				switch (_root_axis[0][i])
+				{
+				case 'X':
+
+					break;
+				case 'Y':
+					break;
+				case 'Z':
+					break;
+				default:
+					break;
+				}
+			}
+		}
 	}
 
 	glm::vec3 RootOrientation() const

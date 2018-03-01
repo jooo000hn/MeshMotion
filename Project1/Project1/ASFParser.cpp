@@ -18,7 +18,7 @@ ASFParser::~ASFParser()
 {
 }
 
-void ASFParser::ParseSection(MeshSkeleton &skeleton, std::vector<std::string> subTokens)
+void ASFParser::ParseSection(MeshSkeleton& skeleton, std::vector<std::string> subTokens)
 {
 	if (subTokens.size() == 0)
 		return;
@@ -35,7 +35,7 @@ void ASFParser::ParseSection(MeshSkeleton &skeleton, std::vector<std::string> su
 	glm::vec3 rootOrientation;
 	std::vector<SkeletonNode*> bonedata;
 	unsigned int id = 0;
-	switch (ASFParser::Str2Section(s))
+	switch (Str2Section(s))
 	{
 	case SectionName::version:
 		if (!CheckSizeEqual(subTokens, 2, s))
@@ -58,7 +58,11 @@ void ASFParser::ParseSection(MeshSkeleton &skeleton, std::vector<std::string> su
 	case SectionName::documentation:
 		if (!CheckSizeGreater(subTokens, 2, s))
 			return;
-		std::for_each(subTokens.begin() + 1, subTokens.end(), [&](std::string& s) {documentation.append(s); documentation.append(" "); });
+		std::for_each(subTokens.begin() + 1, subTokens.end(), [&](std::string& s)
+		{
+			documentation.append(s);
+			documentation.append(" ");
+		});
 		skeleton.SetDocumentation(documentation);
 		break;
 	case SectionName::root:
@@ -66,28 +70,28 @@ void ASFParser::ParseSection(MeshSkeleton &skeleton, std::vector<std::string> su
 			return;
 		id = 2;
 		// root order
-		while(subTokens[id]!="axis")
+		while (subTokens[id] != "axis")
 		{
 			rootOrder.push_back(subTokens[id++]);
 		}
 		id++;
 		// root axis
-		while(subTokens[id]!="position")
+		while (subTokens[id] != "position")
 		{
 			rootAxis.push_back(subTokens[id++]);
 		}
 		id++;
 		// root position
-		while(subTokens[id]!="orientation")
+		while (subTokens[id] != "orientation")
 		{
 			rootPosition = glm::vec3(
-				atof(subTokens[id++].c_str()), 
-				atof(subTokens[id++].c_str()), 
+				atof(subTokens[id++].c_str()),
+				atof(subTokens[id++].c_str()),
 				atof(subTokens[id++].c_str()));
 		}
 		id++;
 		// root orientation
-		while(id < subTokens.size())
+		while (id < subTokens.size())
 		{
 			rootOrientation = glm::vec3(
 				atof(subTokens[id++].c_str()),
@@ -104,11 +108,8 @@ void ASFParser::ParseSection(MeshSkeleton &skeleton, std::vector<std::string> su
 		ParseBone(bonedata, subTokens);
 		skeleton.SetBonedata(bonedata);
 		break;
-	case SectionName::hierarchy:
-		// ParseHierarchy()
-		break;
-	case SectionName::undefined:
 
+	case SectionName::undefined:
 		break;
 	}
 }
@@ -121,23 +122,23 @@ void ASFParser::ParseBone(std::vector<SkeletonNode*>& bonedata, std::vector<std:
 		if (subTokens[i] == "begin")
 		{
 			currentNode = new SkeletonNode();
-			while(subTokens[i]!="end")
+			while (subTokens[i] != "end")
 			{
-				int count,pair;
-				switch (ASFParser::Str2BoneInfo(subTokens[i]))
+				int count, pair;
+				switch (Str2BoneInfo(subTokens[i]))
 				{
 				case BoneInfo::id:
-					currentNode->SetId(std::stoi(subTokens[++i]));
+					currentNode->SetId(stoi(subTokens[++i]));
 					break;
 				case BoneInfo::name:
 					currentNode->SetName(subTokens[++i]);
 					break;
 				case BoneInfo::direction:
-					currentNode->SetDirection(glm::vec3(std::stof(subTokens[i+1]), std::stof(subTokens[i+2]), std::stof(subTokens[i+3])));
+					currentNode->SetDirection(glm::vec3(stof(subTokens[i + 1]), stof(subTokens[i + 2]), stof(subTokens[i + 3])));
 					i += 3;
 					break;
 				case BoneInfo::length:
-					currentNode->SetLength(std::stof(subTokens[++i]));
+					currentNode->SetLength(stof(subTokens[++i]));
 					break;
 				case BoneInfo::axis:
 					currentNode->SetAxis(std::vector<std::string>{subTokens[++i], subTokens[++i], subTokens[++i], subTokens[++i]});
@@ -148,11 +149,11 @@ void ASFParser::ParseBone(std::vector<SkeletonNode*>& bonedata, std::vector<std:
 					{
 						count++;
 					}
-					for (int j = 0; j < count-1; j++)
+					for (int j = 0; j < count - 1; j++)
 					{
 						currentNode->AddDof(subTokens[i + j + 1]);
 					}
-					i += count-1;
+					i += count - 1;
 					break;
 				case BoneInfo::limits:
 					count = 1;
@@ -160,13 +161,13 @@ void ASFParser::ParseBone(std::vector<SkeletonNode*>& bonedata, std::vector<std:
 					{
 						count++;
 					}
-					pair = (count-1) / 2; // (,xxx,xxx,)
-					for(int j = 0; j < pair;j++)
+					pair = (count - 1) / 2; // (,xxx,xxx,)
+					for (int j = 0; j < pair; j++)
 					{
 						int index = i + j * 2 + 1;
-						subTokens[index] = subTokens[index].substr(subTokens[index].find('(')+1);
-						subTokens[index+1] = subTokens[index+1].substr(0,subTokens[index+1].find(')'));
-						currentNode->AddLimits(glm::vec2(std::stof(subTokens[index]), std::stof(subTokens[index + 1])));
+						subTokens[index] = subTokens[index].substr(subTokens[index].find('(') + 1);
+						subTokens[index + 1] = subTokens[index + 1].substr(0, subTokens[index + 1].find(')'));
+						currentNode->AddLimits(glm::vec2(stof(subTokens[index]), stof(subTokens[index + 1])));
 					}
 					i += count - 1;
 					break;
@@ -180,41 +181,82 @@ void ASFParser::ParseBone(std::vector<SkeletonNode*>& bonedata, std::vector<std:
 	}
 }
 
+void ASFParser::ParseHierarchy(std::vector<SkeletonNode*>& bonedata, std::vector<std::vector<std::string>> subTokens)
+{
+	if (subTokens.size() <= 2)
+		return;
+
+	unsigned int i = 0;
+	while (subTokens[i++][0] != "begin");
+
+	// Initialize a tmp map to quickly access the skeleton node
+	std::unordered_map<std::string, SkeletonNode*> name2bonedata;
+	std::for_each(bonedata.begin(), bonedata.end(), [&](SkeletonNode* n)
+	{
+		name2bonedata[n->Name()] = n;
+	});
+
+
+	while (i < subTokens.size()-1)
+	{
+		// parse a row, which is a hiarchy
+		auto rootName = subTokens[i][0];
+		if (rootName == "root")
+		{
+			i++;
+			continue;
+		}
+			
+
+		SkeletonNode* rootNode = nullptr;
+		rootNode = name2bonedata.at(rootName);
+
+		for (auto iter = subTokens[i].begin() + 1; iter != subTokens[i].end(); ++iter)
+		{
+			auto node = name2bonedata.at(*iter);
+			if (node != nullptr)
+			{
+				rootNode->AddChildren(node);
+				node->SetParent(rootNode);
+			}
+		}
+
+		i++;
+	}
+}
+
 SectionName ASFParser::Str2Section(std::string s)
 {
-	if(s == "version")
+	if (s == "version")
 	{
 		return SectionName::version;
 	}
-	else if(s == "name")
+	if (s == "name")
 	{
 		return SectionName::name;
 	}
-	else if(s == "units")
+	if (s == "units")
 	{
 		return SectionName::units;
 	}
-	else if(s == "documentation")
+	if (s == "documentation")
 	{
 		return SectionName::documentation;
 	}
-	else if(s == "root")
+	if (s == "root")
 	{
 		return SectionName::root;
 	}
-	else if(s == "bonedata")
+	if (s == "bonedata")
 	{
 		return SectionName::bonedata;
 	}
-	else if(s == "hierarchy")
+	if (s == "hierarchy")
 	{
 		return SectionName::hierarchy;
 	}
-	else
-	{
-		DEBUG("Find an undefined section!", "");
-		return SectionName::undefined;
-	}
+	DEBUG("Find an undefined section!", "");
+	return SectionName::undefined;
 }
 
 BoneInfo ASFParser::Str2BoneInfo(std::string s)
@@ -223,43 +265,40 @@ BoneInfo ASFParser::Str2BoneInfo(std::string s)
 	{
 		return BoneInfo::id;
 	}
-	else if (s == "name")
+	if (s == "name")
 	{
 		return BoneInfo::name;
 	}
-	else if (s == "direction")
+	if (s == "direction")
 	{
 		return BoneInfo::direction;
 	}
-	else if(s=="length")
+	if (s == "length")
 	{
 		return BoneInfo::length;
 	}
-	else if (s == "axis")
+	if (s == "axis")
 	{
 		return BoneInfo::axis;
 	}
-	else if (s == "dof")
+	if (s == "dof")
 	{
 		return BoneInfo::dof;
 	}
-	else if (s == "limits")
+	if (s == "limits")
 	{
 		return BoneInfo::limits;
 	}
-	else if( s== "begin")
+	if (s == "begin")
 	{
 		return BoneInfo::begin;
 	}
-	else if( s== "end")
+	if (s == "end")
 	{
 		return BoneInfo::end;
 	}
-	else
-	{
-		DEBUG("Find an undefined bone information!", "");
-		return BoneInfo::undefined;
-	}
+	DEBUG("Find an undefined bone information!", "");
+	return BoneInfo::undefined;
 }
 
 BoneName ASFParser::Str2BoneName(std::string s)
@@ -268,140 +307,146 @@ BoneName ASFParser::Str2BoneName(std::string s)
 	{
 		return BoneName::lhipjoint;
 	}
-	else if (s == "lfemur")
+	if (s == "lfemur")
 	{
 		return BoneName::lfemur;
 	}
-	else if (s == "ltibia")
+	if (s == "ltibia")
 	{
 		return BoneName::ltibia;
 	}
-	else if (s == "lfoot")
+	if (s == "lfoot")
 	{
 		return BoneName::lfoot;
 	}
-	else if (s == "ltoes")
+	if (s == "ltoes")
 	{
 		return BoneName::ltoes;
 	}
-	else if (s == "rhipjoint")
+	if (s == "rhipjoint")
 	{
 		return BoneName::rhipjoint;
 	}
-	else if (s == "rfemur")
+	if (s == "rfemur")
 	{
 		return BoneName::rfemur;
 	}
-	else if (s == "rtibia")
+	if (s == "rtibia")
 	{
 		return BoneName::rtibia;
 	}
-	else if (s == "rfoot")
+	if (s == "rfoot")
 	{
 		return BoneName::rfoot;
 	}
-	else if (s == "rtoes")
+	if (s == "rtoes")
 	{
 		return BoneName::rtoes;
 	}
-	else if (s == "lowerback")
+	if (s == "lowerback")
 	{
 		return BoneName::lowerback;
 	}
-	else if (s == "upperback")
+	if (s == "upperback")
 	{
 		return BoneName::upperback;
 	}
-	else if (s == "thorax")
+	if (s == "thorax")
 	{
 		return BoneName::thorax;
 	}
-	else if (s == "lowerneck")
+	if (s == "lowerneck")
 	{
 		return BoneName::lowerneck;
 	}
-	else if (s == "upperneck")
+	if (s == "upperneck")
 	{
 		return BoneName::upperneck;
 	}
-	else if (s == "head")
+	if (s == "head")
 	{
 		return BoneName::head;
 	}
-	else if (s == "lclavicle")
+	if (s == "lclavicle")
 	{
 		return BoneName::lclavicle;
 	}
-	else if (s == "lhumerus")
+	if (s == "lhumerus")
 	{
 		return BoneName::lhumerus;
 	}
-	else if (s == "lradius")
+	if (s == "lradius")
 	{
 		return BoneName::lradius;
 	}
-	else if (s == "lwrist")
-	{
-		return BoneName::lwrist;
-	}
-	else if (s == "lhand")
-	{
-		return BoneName::lhand;
-	}
-	else if (s == "lfingers")
-	{
-		return BoneName::lfingers;
-	}
-	else if (s == "lthumnb")
-	{
-		return BoneName::lthumnb;
-	}
-	else if (s == "rclavicle")
-	{
-		return BoneName::rclavicle;
-	}
-	else if (s == "rhumerus")
-	{
-		return BoneName::rhumerus;
-	}
-	else if (s == "rradius")
-	{
-		return BoneName::rradius;
-	}
-	else if (s == "rwrist")
-	{
-		return BoneName::rwrist;
-	}
-	else if (s == "rhand")
-	{
-		return BoneName::rhand;
-	}
-	else if (s == "rfingers")
-	{
-		return BoneName::rfingers;
-	}
-	else if (s == "rthumb")
-	{
-		return BoneName::rthumb;
-	}
 	else
 	{
-		DEBUG("Find an undefined bone name!", "");
-		return BoneName::undefined;
-	}  
+		if (s == "lwrist")
+		{
+			return BoneName::lwrist;
+		}
+		if (s == "lhand")
+		{
+			return BoneName::lhand;
+		}
+		if (s == "lfingers")
+		{
+			return BoneName::lfingers;
+		}
+		else
+		{
+			if (s == "lthumnb")
+			{
+				return BoneName::lthumnb;
+			}
+			if (s == "rclavicle")
+			{
+				return BoneName::rclavicle;
+			}
+			else
+			{
+				if (s == "rhumerus")
+				{
+					return BoneName::rhumerus;
+				}
+				if (s == "rradius")
+				{
+					return BoneName::rradius;
+				}
+				if (s == "rwrist")
+				{
+					return BoneName::rwrist;
+				}
+				if (s == "rhand")
+				{
+					return BoneName::rhand;
+				}
+				else if (s == "rfingers")
+				{
+					return BoneName::rfingers;
+				}
+				else if (s == "rthumb")
+				{
+					return BoneName::rthumb;
+				}
+				else
+				{
+					DEBUG("Find an undefined bone name!", "");
+					return BoneName::undefined;
+				}
+			}
+		}
+	}
 }
 
 bool ASFParser::CheckSizeEqual(std::vector<std::string>& subTokens, unsigned size, std::string errorName)
 {
-	if(subTokens.size() != size)
+	if (subTokens.size() != size)
 	{
 		DEBUG(errorName, "token size error!");
 		return false;
 	}
-	else
-	{
-		return true;
-	}
+	return true;
 }
 
 bool ASFParser::CheckSizeGreater(std::vector<std::string>& subTokens, unsigned size, std::string errorName)
@@ -411,10 +456,7 @@ bool ASFParser::CheckSizeGreater(std::vector<std::string>& subTokens, unsigned s
 		DEBUG(errorName, "token size error!");
 		return false;
 	}
-	else
-	{
-		return true;
-	}
+	return true;
 }
 
 MeshSkeleton ASFParser::ParseASF(std::string file)
@@ -424,11 +466,12 @@ MeshSkeleton ASFParser::ParseASF(std::string file)
 
 	// Initialize tokens
 	auto tokens = GetTokens(file);
+	auto rowTokens = GetTokensByLine(file);
 	std::vector<int> positions;
 	int p = 0;
-	std::for_each(tokens.begin(), tokens.end(),[&](std::string s)
+	std::for_each(tokens.begin(), tokens.end(), [&](std::string s)
 	{
-		if (s.find(":")!=std::string::npos)
+		if (s.find(":") != std::string::npos)
 		{
 			positions.push_back(p);
 		}
@@ -436,7 +479,6 @@ MeshSkeleton ASFParser::ParseASF(std::string file)
 	});
 
 	// read the skeleton information
-	
 	for (unsigned i = 0; i < positions.size(); ++i)
 	{
 		unsigned pos = positions[i];
@@ -446,11 +488,16 @@ MeshSkeleton ASFParser::ParseASF(std::string file)
 		{
 			ParseSection(skeleton, std::vector<std::string>(tokens.begin() + pos, tokens.begin() + positions[i + 1]));
 		}
-		else // deal with the last one
+		else // deal with hiearchy
 		{
-			ParseSection(skeleton, std::vector<std::string>(tokens.begin() + pos, tokens.end()));
+			unsigned int row = 0;
+			while (rowTokens[row++][0] != ":hierarchy");
+			std::vector<SkeletonNode*> bonedata = skeleton.Bonedata();
+			// parse in the hierarchy information
+			ParseHierarchy(bonedata, std::vector<std::vector<std::string>>(rowTokens.begin() + row, rowTokens.end()));
+			skeleton.SetBonedata(bonedata);
 		}
-	};
+	}
 
 	return skeleton;
 }

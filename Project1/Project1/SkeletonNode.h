@@ -92,6 +92,30 @@ public:
 	{
 		_axis = basic_strings;
 	}
+
+
+	std::vector<SkeletonNode*> Children() const
+	{
+		return _children;
+	}
+
+	void AddChildren(SkeletonNode* n)
+	{
+		if(n!=nullptr)
+			_children.push_back(n);
+	}
+
+
+	SkeletonNode* Parent() const
+	{
+		return _parent;
+	}
+
+	void SetParent(SkeletonNode* skeleton_node)
+	{
+		_parent = skeleton_node;
+	}
+
 private:
 	int _id;     
 	std::string _name;
@@ -100,5 +124,7 @@ private:
 	std::vector<std::string> _axis;
 	std::vector<std::string> _dof;
 	std::vector<glm::vec2> _limits;
+	std::vector<SkeletonNode*> _children;
+	SkeletonNode* _parent;
 };
 
