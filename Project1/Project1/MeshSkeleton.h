@@ -87,11 +87,13 @@ public:
 				switch (_root_axis[0][i])
 				{
 				case 'X':
-
+					_root_position.x = highp_vec3[i];
 					break;
 				case 'Y':
+					_root_position.y = highp_vec3[i];
 					break;
 				case 'Z':
+					_root_position.z = highp_vec3[i];
 					break;
 				default:
 					break;

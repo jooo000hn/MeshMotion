@@ -39,6 +39,9 @@ void GraphicsSkeleton::Init_Buffers()
 
 	jointsPos.push_back(_skeleton.RootPosition());
 
+	// BFS to all the nodes
+	// Calculate the joint's position
+	// Record the element information
 
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);

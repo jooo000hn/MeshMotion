@@ -25,15 +25,7 @@ void ReloadShaders();
 
 
 int main(int argc, char** argv)
-{
-	auto gv = GlobalVariables::Instance();
-
-	std::cout << "Let's work on mesh extraction and motion!\n";
-	auto p = ASFParser::Instance();
-	auto skeleton = p->ParseASF(gv->group1Dir + gv->testASF);
-	auto m = AMCParser::Instance();
-	// auto motion = m->ParsAMC(gv->group1Dir + gv->testAMC,29);
-	
+{	
 	InitDefaultGlutEnvironment(argc, argv);
 	InitOpenGL();
 
@@ -124,10 +116,19 @@ void Init_Global()
 	glClearColor(gv->vec4_uniforms["Backgound_Color"].x, gv->vec4_uniforms["Backgound_Color"].y,
 		gv->vec4_uniforms["Backgound_Color"].z, gv->vec4_uniforms["Backgound_Color"].a);
 
-	GraphicsBase* skeleton = new GraphicsSkeleton();
-	skeleton->Init_Shaders(gv->skeleton_vs, gv->skeleton_fs);
-	skeleton->Init_Buffers();
-	gv->graphics.push_back(skeleton);
+	// Parsing
+	auto gvv = GlobalVariables::Instance();
+
+	std::cout << "Let's work on mesh extraction and motion!\n";
+	auto p = ASFParser::Instance();
+	auto skeleton = p->ParseASF(gvv->group1Dir + gvv->testASF);
+	auto m = AMCParser::Instance();
+	// auto motion = m->ParsAMC(gv->group1Dir + gv->testAMC,29);
+
+	GraphicsBase* skeleton_render = new GraphicsSkeleton(skeleton);
+	skeleton_render->Init_Shaders(gv->skeleton_vs, gv->skeleton_fs);
+	skeleton_render->Init_Buffers();
+	gv->graphics.push_back(skeleton_render);
 }
 
 void Display()

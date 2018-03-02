@@ -189,6 +189,11 @@ void ASFParser::ParseHierarchy(std::vector<SkeletonNode*>& bonedata, std::vector
 	unsigned int i = 0;
 	while (subTokens[i++][0] != "begin");
 
+	// Add a root to bonedata
+	SkeletonNode* root = new SkeletonNode();
+	root->SetName("root");
+	bonedata.push_back(root);
+
 	// Initialize a tmp map to quickly access the skeleton node
 	std::unordered_map<std::string, SkeletonNode*> name2bonedata;
 	std::for_each(bonedata.begin(), bonedata.end(), [&](SkeletonNode* n)
@@ -201,12 +206,6 @@ void ASFParser::ParseHierarchy(std::vector<SkeletonNode*>& bonedata, std::vector
 	{
 		// parse a row, which is a hiarchy
 		auto rootName = subTokens[i][0];
-		if (rootName == "root")
-		{
-			i++;
-			continue;
-		}
-			
 
 		SkeletonNode* rootNode = nullptr;
 		rootNode = name2bonedata.at(rootName);
