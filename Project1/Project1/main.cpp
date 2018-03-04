@@ -121,11 +121,11 @@ void Init_Global()
 
 	std::cout << "Let's work on mesh extraction and motion!\n";
 	auto p = ASFParser::Instance();
-	auto skeleton = p->ParseASF(gvv->group1Dir + gvv->testASF);
+	gv->currentSkeleton = p->ParseASF(gvv->group1Dir + gvv->testASF);
 	auto m = AMCParser::Instance();
-	// auto motion = m->ParsAMC(gv->group1Dir + gv->testAMC,29);
+	gv->currentAnimation = m->ParsAMC(gvv->group1Dir + gvv->testAMC);
 
-	GraphicsBase* skeleton_render = new GraphicsSkeleton(skeleton);
+	GraphicsBase* skeleton_render = new GraphicsSkeleton(gv->currentSkeleton, gv->currentAnimation);
 	skeleton_render->Init_Shaders(gv->skeleton_vs, gv->skeleton_fs);
 	skeleton_render->Init_Buffers();
 	gv->graphics.push_back(skeleton_render);

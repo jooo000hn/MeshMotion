@@ -11,7 +11,7 @@ AMCParser::~AMCParser()
 {
 }
 
-MeshMotionFlow AMCParser::ParsAMC(std::string file,unsigned int joints)
+MeshMotionFlow AMCParser::ParsAMC(std::string file)
 {
 	DEBUG("We try to parse ", file);
 	auto rowTokens = GetTokensByLine(file);
@@ -22,6 +22,10 @@ MeshMotionFlow AMCParser::ParsAMC(std::string file,unsigned int joints)
 
 	int i = 0;
 	while (rowTokens[i++][0] != ":DEGREES");
+	int index2 = i;
+	while (rowTokens[index2++][0] != "2");
+	const int joints = index2 - i - 2;
+
 
 	unsigned int frames = static_cast<int>((rowTokens.size() - i) / (joints + 1));
 

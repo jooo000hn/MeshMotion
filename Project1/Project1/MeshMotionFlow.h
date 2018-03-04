@@ -8,6 +8,7 @@ class MeshMotionFlow
 {
 public:
 	MeshMotionFlow(int frames); // how many frames
+	MeshMotionFlow() {};
 	~MeshMotionFlow();
 
 	std::vector<std::unordered_map<std::string, std::vector<float>>> Motions() const

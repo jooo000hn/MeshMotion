@@ -3,11 +3,13 @@
 #include "Tool.h"
 #include "IchenLib/GLCommon.h"
 #include "GraphicsGlobalVariables.h"
+#include "MeshMotionFlow.h"
 
 
-GraphicsSkeleton::GraphicsSkeleton(MeshSkeleton& skeleton): vao(-1), vbo(-1), ebo(-1)
+GraphicsSkeleton::GraphicsSkeleton(MeshSkeleton skeleton,MeshMotionFlow meshMotion): vao(-1), vbo(-1), ebo(-1)
 {
 	_skeleton = skeleton;
+	_meshMotion = meshMotion;
 }
 
 

@@ -8,7 +8,7 @@ class AMCParser : public IParseTool
 public:
 	static AMCParser* Instance() { if (_instance == nullptr) _instance = new AMCParser();  return _instance; }
 
-	MeshMotionFlow ParsAMC(std::string file,unsigned int joints);
+	MeshMotionFlow ParsAMC(std::string file);
 private:
 	AMCParser();
 	~AMCParser();

@@ -4,6 +4,8 @@
 #include "DrawObjects/GraphicsBase.h"
 #include <unordered_map>
 #include <map>
+#include "MeshSkeleton.h"
+#include "MeshMotionFlow.h"
 
 class GraphicsGlobalVariables
 {
@@ -86,6 +88,10 @@ public:
 	GLint time_loc;
 	GLint resolution_loc;
 	GLint mouse_loc;
+
+	// Skeleton and animation
+	MeshSkeleton currentSkeleton;
+	MeshMotionFlow currentAnimation;
 
 	// math
 	float PI;
