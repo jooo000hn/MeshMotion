@@ -82,7 +82,7 @@ public:
 		if(_root_axis[0] != "")
 		{
 			auto axis_size = _root_axis[0].size();
-			for(int i= 0; i < axis_size;++i)
+			for(size_t i= 0; i < axis_size;++i)
 			{
 				switch (_root_axis[0][i])
 				{

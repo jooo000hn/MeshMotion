@@ -18,5 +18,8 @@ public:
 private:
 	GLuint vao, vbo, ebo;
 	MeshSkeleton _skeleton;
+
+	std::vector<glm::vec3> _jointsPos;
+	std::vector<unsigned int> _topoOrder;
 };
 

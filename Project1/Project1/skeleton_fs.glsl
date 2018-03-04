@@ -5,7 +5,7 @@ layout(location = 3) uniform vec2 iMouse;
 layout(location = 4)uniform vec4 fcolor;
 
 in vec2 texture_coord;
-in vec4 normal_coord;
+in vec3 normal_coord;
 out vec4 fragColor;
 
 void main()

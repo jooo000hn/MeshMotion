@@ -331,8 +331,8 @@
     lwrist lhand lthumb
     lhand lfingers
     rclavicle rhumerus
-    rhumerus rradius
     rradius rwrist
+    rhumerus rradius
     rwrist rhand rthumb
     rhand rfingers
   end
